@@ -65,6 +65,7 @@ app.get("/games/:id", async (req,res)=>{
 
 //post route to add data
 app.post("/addgame", async (req,res)=>{
+    console.log(req.body);
     try{
         const newGame = new Game(req.body);
         const savedGame = await newGame.save();
@@ -132,6 +133,13 @@ function tellTheMessage(){
 //Handlebars examples
 app.get("/hbsindex", (req,res)=>{
     res.render("home", {
+        title:"Welcome to the Handlbars Site",
+        message:"This is our page using the template engine"
+    })
+});
+
+app.get("/addgame", (req,res)=>{
+    res.render("addgame", {
         title:"Welcome to the Handlbars Site",
         message:"This is our page using the template engine"
     })
